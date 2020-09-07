@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="helloWorldCanvas" width="520" height="200" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+
+var canvas = document.getElementById("helloWorldCanvas");
+var ctx = canvas.getContext("2d");
+
+var drawLine = function(ctx, line, color) {
+    ctx.beginPath();
+    ctx.moveTo(line.x1, line.y1);
+    ctx.lineTo(line.x2, line.y2);
+    ctx.strokeStyle = color;
+    ctx.stroke();
+}
+
+var drawLines = function(ctx, lines, color, delay) {
+    if (lines.length > 0) {
+        drawLine(ctx, lines[0], color);
+        setTimeout(() => drawLines(ctx, lines.slice(1), color, delay), delay);
+    }
+};
+
+var m = 4;
+
+var helloWorldLines = [
+    // H
+    {x1:  40+m, y1:  50, x2:  40+m, y2: 150},
+    {x1:  40+m, y1: 100, x2:  80-m, y2: 100},
+    {x1:  80-m, y1:  50, x2:  80-m, y2: 150},
+    // E
+    {x1:  80+m, y1:  50, x2:  80+m, y2: 150},
+    {x1:  80+m, y1:  50, x2: 120-m, y2:  50},
+    {x1:  80+m, y1: 100, x2: 120-m, y2: 100},
+    {x1:  80+m, y1: 150, x2: 120-m, y2: 150},
+    // L
+    {x1: 120+m, y1:  50, x2: 120+m, y2: 150},
+    {x1: 120+m, y1: 150, x2: 160-m, y2: 150},
+    // L
+    {x1: 160+m, y1:  50, x2: 160+m, y2: 150},
+    {x1: 160+m, y1: 150, x2: 200-m, y2: 150},
+    // O
+    {x1: 200+m, y1:  50, x2: 200+m, y2: 150},
+    {x1: 200+m, y1:  50, x2: 240-m, y2:  50},
+    {x1: 240-m, y1:  50, x2: 240-m, y2: 150},
+    {x1: 200+m, y1: 150, x2: 240-m, y2: 150},
+    // W
+    {x1: 280+m, y1:  50, x2: 280+m, y2: 150},
+    {x1: 280+m, y1: 150, x2: 320-m, y2: 150},
+    {x1:   300, y1:  75, x2:   300, y2: 150},
+    {x1: 320-m, y1:  50, x2: 320-m, y2: 150},
+    // O
+    {x1: 320+m, y1:  50, x2: 320+m, y2: 150},
+    {x1: 320+m, y1:  50, x2: 360-m, y2:  50},
+    {x1: 360-m, y1:  50, x2: 360-m, y2: 150},
+    {x1: 320+m, y1: 150, x2: 360-m, y2: 150},
+    // R
+    {x1: 360+m, y1:  50, x2: 360+m, y2: 150},
+    {x1: 360+m, y1:  50, x2: 400-m, y2:  50},
+    {x1: 400-m, y1:  50, x2: 400-m, y2: 100},
+    {x1: 360+m, y1: 100, x2: 400-m, y2: 100},
+    {x1:   385, y1: 100, x2:   385, y2: 150},
+    // L
+    {x1: 400+m, y1:  50, x2: 400+m, y2: 150},
+    {x1: 400+m, y1: 150, x2: 440-m, y2: 150},
+    // D
+    {x1: 440+m, y1:  50, x2: 440+m, y2: 150},
+    {x1: 440+m, y1:  50, x2: 480-m, y2:  60},
+    {x1: 480-m, y1:  60, x2: 480-m, y2: 140},
+    {x1: 440+m, y1: 150, x2: 480-m, y2: 140},
+];
+
+drawLines(ctx, helloWorldLines, '#ff0000', 100);
+
+</script>
+
+</body>
+</html>
